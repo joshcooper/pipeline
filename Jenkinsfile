@@ -1,10 +1,25 @@
 pipeline {
     agent any
 
+    parameters {
+        string(name: 'SHA', description: 'blah')
+    }
     stages {
         stage('Build') {
-            steps {
-                echo 'Building..'
+            matrix {
+                axes {
+                    axis {
+                        name 'PLATFORM'
+                        values 'a', 'b'
+                    }
+                }
+                stages {
+                    stage('Building') {
+                        steps {
+                            echo 'building ${PLATFORM}'
+                        }
+                    }
+                }
             }
         }
         stage('Test') {
