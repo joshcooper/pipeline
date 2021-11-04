@@ -16,7 +16,7 @@ pipeline {
                 stages {
                     stage('Building') {
                         steps {
-                            echo 'building ${PLATFORM}'
+                            echo "building ${PLATFORM}"
                         }
                     }
                 }
