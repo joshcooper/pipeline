@@ -19,6 +19,14 @@ pipeline {
                             echo "building ${PLATFORM}"
                         }
                     }
+                    stage('Transient') {
+                        when {
+                            expression { "${PLATFORM}" == "a" }
+                        }
+                        steps {
+                            sh 'exit 1'
+                        }
+                    }
                 }
             }
         }
